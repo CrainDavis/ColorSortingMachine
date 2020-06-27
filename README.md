@@ -19,7 +19,7 @@ This application is a side-project for [Color-Story](https://github.com/Mleuer/C
 ---
 
 ## Usage:
-Open the application () and do the following steps:
+Open the application (https://craindavis.github.io/ColorSortingMachine/) and do the following steps:
 * __step 1:__ Input a value for red, one for green, and one for blue in the respective input fields. All values should be positive integers between 0 and 255.
 * __step 2:__ Click the "go" button. This will render the box on the bottom-left to display the RGB value as a color. On the bottom right, there will be two sections to take note of:
     * the user's input in RGB color code format
