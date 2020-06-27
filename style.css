@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+    background-color: whitesmoke;
+}
+.page-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.my-button {
+    width: 100%;
+}
+.color-square {
+    padding: 100px 0;
+    box-shadow: 1px 1px 10px 1px #888888;
+}
