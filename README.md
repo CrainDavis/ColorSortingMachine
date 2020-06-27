@@ -14,7 +14,7 @@ This application is a side-project for [Color-Story](https://github.com/Mleuer/C
 * white
 * gray
 
-![img-0](assets/rgb-color-wheel-lg.jpg)
+The chart in [this link](http://dawnsbrain.com/the-rgb-color-wheel/) was used for reference.
 
 ---
 
@@ -32,7 +32,7 @@ Open the application (https://craindavis.github.io/ColorSortingMachine/) and do 
 ---
 
 ## Demonstration:
-coming soon...
+![demo gif](assets/app-demo.gif)
 
 ---
 
@@ -43,12 +43,17 @@ coming soon...
 
 ## Future Development:
 There are likely some kinks that still need to be worked out. Following _significant_ testing, this section will be updated.
+* the color "gray" is a bit subjective
+* the difference between "red", "magenta", and "purple" is not well-defined
+    * a pink-ish color can be categorized as any of the above depending on how it gets sorted in the algorithm, and the outcome can be debatable
+* the range of "green" and "blue" are each quite large compared to "red"
 
 ---
 
 ## Resources:
 * Algorithm Development:
-    * [Categorizing Colors that are in Hex values](https://www.autoitscript.com/forum/topic/114433-categorizing-colors-that-are-in-hex-values/)
+    * ["Categorizing Colors that are in Hex values" -- Autoit General Help and Support](https://www.autoitscript.com/forum/topic/114433-categorizing-colors-that-are-in-hex-values/)
+    * ["The RGB Color Wheel" -- Blue Lobster Art](http://dawnsbrain.com/the-rgb-color-wheel/)
     * [Google Color Picker](https://www.google.com/search?q=color+picker&oq=color+picker&aqs=chrome.0.69i59j0l5j69i60l2.1657j0j7&sourceid=chrome&ie=UTF-8)
 * Application Coding:
     * [Bootstrap](https://getbootstrap.com/docs/4.4/getting-started/introduction/)

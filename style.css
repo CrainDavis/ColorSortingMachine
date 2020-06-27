@@ -13,3 +13,24 @@ body {
     padding: 100px 0;
     box-shadow: 1px 1px 10px 1px #888888;
 }
+#redColor {
+    border: 2px solid red;
+    color: red;
+}
+#greenColor {
+    border: 2px solid green;
+    color: green;
+}
+#blueColor {
+    border: 2px solid blue;
+    color: blue;
+}
+#redColor::placeholder {
+    color: red;
+}
+#greenColor::placeholder {
+    color: green;
+}
+#blueColor::placeholder {
+    color: blue;
+}
