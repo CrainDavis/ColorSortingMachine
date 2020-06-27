@@ -19,7 +19,7 @@ $("#submitBtn").on("click", function () {
     var userGreenValue = $("#greenColor").val();
     var userBlueValue = $("#blueColor").val();
     // and store them in an array
-    rgbValues = [userRedValue, userGreenValue, userBlueValue];
+    var rgbValues = [userRedValue, userGreenValue, userBlueValue];
 
     // create a string to display on the browser page
     var colorString = "";
@@ -50,7 +50,7 @@ $("#submitBtn").on("click", function () {
     // store the three values in an array
     var numArray = [redNum, greenNum, blueNum];
     console.log("number array", numArray);
-    // same thing, but sorted from largest to smallest (this was for testing purposes...)
+    // same thing, but sorted from largest to smallest (this was for testing purposes and ended up not being used anywhere...)
     var sortedNumArray = [redNum, greenNum, blueNum].sort((a, b) => b - a);
     console.log("sorted number array", sortedNumArray);
 
@@ -88,6 +88,7 @@ $("#submitBtn").on("click", function () {
       ];
 
       // for each "true color", get the difference from the user's input
+      // Red, Orange, Yellow, Lime, Green, Turquoise, Cyan, Aqua, Blue, Violet, Magenta, Pink
       for (var i = 0; i < trueROYLGTCABVMP.length; i++) {
         var currentTrueColor = trueROYLGTCABVMP[i];
         getDifferences(currentTrueColor, numArray);
@@ -110,7 +111,7 @@ $("#submitBtn").on("click", function () {
       // =================================
 
       // sometimes the colorDifferences array will contain two equal values; PS sorting is not an option
-      // matches are always consecutive odd numbers, plus [1] and [11]...
+      // matches are always consecutive odd numbers, plus [1] & [11]...
       // this latter case will be worked out separately from the for loop below
       const oddNumbers = [1, 3, 5, 7, 9, 11];
       // default
@@ -120,6 +121,7 @@ $("#submitBtn").on("click", function () {
         var firstIndex = oddNumbers[o];
         var secondIndex = oddNumbers[o + 1];
         if (
+          // checking for matches...
           colorDifferences[firstIndex] === colorDifferences[secondIndex] &&
           (colorDifferences.indexOf(lowestSum) === firstIndex ||
             colorDifferences.indexOf(lowestSum) === secondIndex)
@@ -153,7 +155,7 @@ $("#submitBtn").on("click", function () {
             console.log("3) red = blue > green; category red");
             colorCategory = "red";
           }
-          // if two values are equal and the third is more:
+          // if two values are equal and the third is greater:
         } else if (
           (redNum === greenNum && redNum < blueNum) ||
           (greenNum === blueNum && greenNum < redNum) ||
