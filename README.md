@@ -14,7 +14,7 @@ This application is a side-project for [Color-Story](https://github.com/Mleuer/C
 * white
 * gray
 
-![img-1](assets/rgb-color-wheel-lg.jpg)
+![img-0](assets/rgb-color-wheel-lg.jpg)
 
 ---
 
@@ -25,7 +25,9 @@ Open the application (https://craindavis.github.io/ColorSortingMachine/) and do 
     * the user's input in RGB color code format
     * the category it belongs to based on the algorithm
 
-![img-2](assets/app-img.png)
+![img-1](assets/app-img1.png)
+
+![img-2](assets/app-img2.png)
 
 ---
 
