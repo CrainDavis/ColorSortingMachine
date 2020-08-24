@@ -53,20 +53,56 @@ If this `averageDiff` value is less than __10__, then the user's input RGB color
 * If this `averageDiff` value is greater than or equal to __10__, then another variable needs to be created: the average of the three user values, called `averageColor`. This is also used to determine whether the user's input color is black/white/gray or not. An "`averageColor` value" is defined as the value of the user's red, green, and blue input numbers added together and divided by three. For example, if the value __RGB(148, 219, 27)__ is entered, the "`averageColor` value" is (148 + 219 + 27) / 3, which equals __131.33__.
     * If this `averageColor` value is >= 0 but <= 30, then the color category is determined to be `black`.
     * If it is >= 240 and <= 255, then the color category is `white`.
-    * However, if the `averageColor` value is between 30 and 240, then the resulting categorization will be a color other than black/white/gray.
-* By using __omikron48__'s advice from [this forum response](https://www.autoitscript.com/forum/topic/114433-categorizing-colors-that-are-in-hex-values/), (`Get the difference of the color's RGB values from the RGB values of your 6 base colors, sum them up then choose the one with the lowest difference?`) I first created a set of 12 _"base colors"_ based on the following color wheel chart seen at the top of this README:
-    * red (255, 0, 0)
-    * orange (255, 125, 0)
-    * yellow (255, 255, 0)
-    * yellow-green (125, 255 0)
-    * green (0, 255, 0)
-    * turquoise (0, 255, 125)
-    * cyan (0, 255, 255)
-    * aqua (0, 125, 255)
-    * blue (0, 0, 255)
-    * violet (125, 0, 255)
-    * magenta (255, 0, 255)
-    * pink (255, 0, 125)
+    * However, if the `averageColor` value is between 30 and 240, then the resulting categorization will be a color other than black/white/gray. Thus, there is a need to examine the user's three input values, comparing them both each other and to a set of 12 _"base colors"_.
+
+* By using __omikron48__'s advice from [this forum response](https://www.autoitscript.com/forum/topic/114433-categorizing-colors-that-are-in-hex-values/), (`Get the difference of the color's RGB values from the RGB values of your 6 base colors, sum them up then choose the one with the lowest difference?`) I first created a set of 12 (rather than 6) _"base colors"_ based on the following color wheel chart seen at the top of this README, and arranged them as a 2D array (an array of arrays):
+    * __red__ = RGB(255, 0, 0)
+    * __orange__ = RGB(255, 125, 0)
+    * __yellow__ = RGB(255, 255, 0)
+    * __yellow-green__ = RGB(125, 255 0)
+    * __green__ = RGB(0, 255, 0)
+    * __turquoise__ = RGB(0, 255, 125)
+    * __cyan__ = RGB(0, 255, 255)
+    * __aqua__ = RGB(0, 125, 255)
+    * __blue__ = RGB(0, 0, 255)
+    * __violet__ = RGB(125, 0, 255)
+    * __magenta__ = RGB(255, 0, 255)
+    * __pink__ = RGB(255, 0, 125)
+
+* For the rest of the explanation, I will be using the value __RGB(245, 26, 111)__ as the user's input value. This value will be categorized as a color other than black/white/gray, as the `averageDiff` (which is __146__) is greater than 10, and the `averageColor` (which is __127.33__) is between 30 and 240.
+* I then compared this user input RGB value to each value in the base color 2D array and generated a `colorDifferences` array (see explanation below).
+    * user input value: __RGB(245, 26, 111)__
+    * base color 2D array (replace the color labels with the RGB values above): `const trueROYLGTCABVMP = [ [red], [orange], [yellow], [yellow-green], [green], [turquoise], [cyan], [aqua], [blue], [violet], [magenta], [pink] ];`
+    * generated `colorDifferences` array: `[147, 220, 350, 460, 585, 488, 618, 488, 415, 290, 180, 50]`
+* Explanation on how to generate the `colorDifferences` array:
+    * First I compare the user's RGB(R?, G?, B?) value to _each_ of the values in the `trueROYLGTCABVMP` base colors array.
+    * The user's input (__RGB(245, 26, 111)__) is first compared to the base __red__ color (__RGB(255, 0, 0)__). I find the absolute (non-negative) difference between each corresponding red, green, and blue value. The `diffRed` value (difference between each of the red values) is __10__ (absolute value of 245 - 255), the `diffGreen` value (difference between each of the green values) is __26__ (absolute value of 26 - 0), and the `diffBlue` (difference between each of the blue values) is __111__ (absolute value of 111 - 0).
+    * Using this __(10, 26, 111)__ value from the three differences, I then calculate a `differenceSum` value by adding these three RGB values together. The result is __147__, which corresponds to the first value in the `colorDifferences` array. 
+* I repeat the process for the remaining 11 values.
+
+* The next step is to find out which of the 12 numbers in the `colorDifferences` array is the smallest. In the case of this explanation, it is __50__, the last number in the array (index of 11). Based on the index number of this lowest value, the color category is determined. (_note_: "red" is listed twice; the second instance corresponds to the "pink" value, but I have chosen to categorize all "pink" values as shades of "red".)
+    * if lowest number = index 0: `colorCategory` = "red"
+    * if lowest number = index 1: `colorCategory` = "orange"
+    * if lowest number = index 2: `colorCategory` = "yellow"
+    * if lowest number = index 3: `colorCategory` = "yellowgreen"
+    * if lowest number = index 4: `colorCategory` = "green"
+    * if lowest number = index 5: `colorCategory` = "turquoise"
+    * if lowest number = index 6: `colorCategory` = "cyan"
+    * if lowest number = index 7: `colorCategory` = "aqua"
+    * if lowest number = index 8: `colorCategory` = "blue"
+    * if lowest number = index 9: `colorCategory` = "purple"
+    * if lowest number = index 10: `colorCategory` = "magenta"
+    * if lowest number = index 11: `colorCategory` = "red"
+* As a result, the user input value (__RGB(245, 26, 111)__) is categorized as "red".
+
+* However, I also came across instances where the lowest number in the `colorDifferences` array appeared twice, causing issues with the algorithm this far. As a result, I needed to also consider how to categorize an RGB value if it was determined to have two "lowest values". 
+    * Take, for example, the RGB value __RGB(75, 119, 63)__: the algorithm thus far will categorize this value as "orange", even though it is actually "green". 
+    * If we look at the `colorDifferences` array `[362, 249, 379, 249, 274, 273, 403, 273, 386, 361, 491, 361]`, we see that the values at index 1 and index 3 are both __249__.
+    * _note_: the values at index 5 and index 7 are also identical (__273__), but because this is greater than __249__, it is disregarded entirely. 
+    * The above algorithm finds the _first instance_ of the lowest number at sets that as the color category, creating an apparent error. Thus, the algorithm needs to be updated.
+* First, I go through the `colorDifferences` array and check to see if there are two "lowest numbers". If there are not, then the algorithm proceeds to categorize the user's input using the singular lowest value as previously explained. But if there are two "lowest values", then the following is done:
+    * Take the user's original three RGB input values, and check to see if any of them are the same.
+    * If the red and green value are identical, then 
 
 ---
 

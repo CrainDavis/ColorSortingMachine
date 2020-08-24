@@ -316,22 +316,22 @@ $("#submitBtn").on("click", function () {
           console.log("27) category yellow");
           colorCategory = "yellow";
         } else if (colorDifferences.indexOf(lowestSum) === 3) {
-          console.log("28) category (yellow-) green");
-          colorCategory = "green";
+          console.log("28) category (yellow-)green");
+          colorCategory = "yellowgreen";
         } else if (colorDifferences.indexOf(lowestSum) === 4) {
           console.log("29) category green");
           colorCategory = "green";
         } else if (colorDifferences.indexOf(lowestSum) === 5) {
           console.log("30) category (turquoise) green");
-          colorCategory = "green";
+          colorCategory = "turquoise";
         } else if (colorDifferences.indexOf(lowestSum) === 6) {
           console.log("31) category cyan");
           colorCategory = "cyan";
         } else if (colorDifferences.indexOf(lowestSum) === 7) {
-          console.log("32) category blue");
-          colorCategory = "blue";
+          console.log("32) category (aqua) blue");
+          colorCategory = "aqua";
         } else if (colorDifferences.indexOf(lowestSum) === 8) {
-          console.log("33) category (indigo) blue");
+          console.log("33) category blue");
           colorCategory = "blue";
         } else if (colorDifferences.indexOf(lowestSum) === 9) {
           console.log("34) category purple");
@@ -342,12 +342,6 @@ $("#submitBtn").on("click", function () {
         } else if (colorDifferences.indexOf(lowestSum) === 11) {
           console.log("36) category red (pinkish?)");
           colorCategory = "red";
-        } else if (colorDifferences.indexOf(lowestSum) === 12) {
-          console.log("37) category black");
-          colorCategory = "black";
-        } else if (colorDifferences.indexOf(lowestSum) === 13) {
-          console.log("38) category white");
-          colorCategory = "white";
         }
       }
     }
