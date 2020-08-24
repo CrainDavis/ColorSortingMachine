@@ -101,15 +101,32 @@ If this `averageDiff` value is less than __10__, then the user's input RGB color
     * _note_: the values at index 5 and index 7 are also identical (__273__), but because this is greater than __249__, it is disregarded entirely. 
     * The above algorithm finds the _first instance_ of the lowest number at sets that as the color category, creating an apparent error. Thus, the algorithm needs to be updated.
 * First, I go through the `colorDifferences` array and check to see if there are two "lowest numbers". If there are not, then the algorithm proceeds to categorize the user's input using the singular lowest value as previously explained. But if there are two "lowest values", then the following is done:
-    * Take the user's original three RGB input values, and check to see if any of them are the same.
-    * If the red and green value are identical, then 
+    * Take the user's original three RGB input values, check to see if any of them are the same, and lastly compare to the remaining value.
+        * If the red and green values are identical:
+            * If the blue value is _less than_ red and green values: `colorCategory` = "yellow"
+            * If the blue value is _greater than_ the red and green values: `colorCategory` = "blue"
+        * If the green and blue values are identical:
+            * If the red value is _less than_ green and blue values: `colorCategory` = "green"
+            * If the red value is _greater than_ the green and blue values: `colorCategory` = "red"
+        * If the red and blue values are identical:
+            * If the green value is _less than_ red and blue values: `colorCategory` = "red"
+            * If the green value is _greater than_ the red and blue values: `colorCategory` = "green"
+        * If all three RGB values are different, then arrange the three values in order from largest to smallest, and determine the color based on the order:
+            * Red > Green > Blue: `colorCategory` = "orange"
+            * Red > Blue > Green: `colorCategory` = "red"
+            * Green > Red > Blue: `colorCategory` = "green"
+            * Green > Blue > Red: `colorCategory` = "green"
+            * Blue > Green > Red: `colorCategory` = "blue"
+            * Blue > Red > Green: `colorCategory` = "purple"
+
+* Unfortunately, this algorithm cannot take into account all the possible RGB color combinations, leading to possible errors. In addition, color categories can also be quite subjective, so not every result will be accurate according to everyone (see [Future Development](#future-development)) below. If you have any questions or concerns, please notify of an issue and/or contact me at my email address.
 
 ---
 
 ## Future Development:
-There are likely some kinks that still need to be worked out. Following _significant_ testing, this section will be updated.
+There are some kinks that still need to be worked out. Following _significant_ testing, this section will be updated.
 * the color "gray" is a bit subjective
-* the difference between "red", "magenta", and "purple" is not well-defined
+* the difference between "red", "magenta", and "purple" is _quite_ subjective
     * a pink-ish color can be categorized as any of the above depending on how it gets sorted in the algorithm, and the outcome can be debatable
 * the range of "green" and "blue" are each quite large compared to "red"
 

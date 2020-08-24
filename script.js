@@ -117,9 +117,16 @@ $("#submitBtn").on("click", function () {
       // default
       var hasMatch = false;
       // go through the colorDifferences array and see if there are any matching values
-      for (var o = 0; o < oddNumbers.length - 1; o++) {
+      for (var o = 0; o <= oddNumbers.length - 1; o++) {
+        // determine first and second indexes:
         var firstIndex = oddNumbers[o];
-        var secondIndex = oddNumbers[o + 1];
+        var secondIndex;
+        if (firstIndex === oddNumbers[5]) {
+          secondIndex = oddNumbers[0];
+        } else {
+          secondIndex = oddNumbers[o + 1];
+        }
+
         if (
           // checking for matches...
           colorDifferences[firstIndex] === colorDifferences[secondIndex] &&
@@ -213,134 +220,50 @@ $("#submitBtn").on("click", function () {
               // or if red is the second highest
             } else if (redNum > greenNum) {
               console.log("12) order BRG; category blue");
-              colorCategory = "blue";
+              colorCategory = "purple";
             }
           }
         }
-        // handles the case that the colorDifference values at index 1 is the same as index 11
-      } else if (colorDifferences[1] === colorDifferences[11]) {
-        // if two values are equal and the third is less:
-        if (
-          (redNum === greenNum && redNum > blueNum) ||
-          (greenNum === blueNum && greenNum > redNum) ||
-          (redNum === blueNum && redNum > greenNum)
-        ) {
-          console.log("two values the same, one value less");
-          // if red and green are the same, the color is yellow
-          if (redNum === greenNum) {
-            console.log("13) red = green > blue; category yellow");
-            colorCategory = "yellow";
-            // if green and blue are the same, the color is green
-          } else if (greenNum === blueNum) {
-            console.log("14) green = blue > red; category green");
-            colorCategory = "green";
-            // if red and blue are the same, the color is red
-          } else if (redNum === blueNum) {
-            console.log("15) red = blue > green; category red");
-            colorCategory = "red";
-          }
-          // if two values are equal and the third is more:
-        } else if (
-          (redNum === greenNum && redNum < blueNum) ||
-          (greenNum === blueNum && greenNum < redNum) ||
-          (redNum === blueNum && redNum < greenNum)
-        ) {
-          console.log("two values the same, one value greater");
-          // if red and green are the same, the color is blue
-          if (redNum === greenNum) {
-            console.log("16) red = green < blue; category blue");
-            colorCategory = "blue";
-            // if green and blue are the same, the color is red
-          } else if (greenNum === blueNum) {
-            console.log("17) green = blue < red; category red");
-            colorCategory = "red";
-            // if red and blue are the same, the color is green
-          } else if (redNum === blueNum) {
-            console.log("18) red = blue < green; category green");
-            colorCategory = "green";
-          }
-          // otherwise, if the three user input values are all different:
-        } else if (
-          redNum !== greenNum &&
-          greenNum !== blueNum &&
-          redNum !== blueNum
-        ) {
-          console.log("all values are different");
-          // if red is the highest value:
-          if (redNum > greenNum && redNum > blueNum) {
-            // if green is the second-highest
-            if (greenNum > blueNum) {
-              console.log("19) order RGB; category orange");
-              colorCategory = "orange";
-              // or if blue is the second-highest
-            } else if (blueNum > greenNum) {
-              console.log("20) order RBG; category red");
-              colorCategory = "red";
-            }
-            // if green is the highest value:
-          } else if (greenNum > redNum && greenNum > blueNum) {
-            // if red is the second-highest
-            if (redNum > blueNum) {
-              console.log("21) order GRB; category green");
-              colorCategory = "green";
-              // or if blue is the second-highest
-            } else if (blueNum > redNum) {
-              console.log("22) order GBR; category green");
-              colorCategory = "green";
-            }
-            // if blue is the highest value:
-          } else if (blueNum > redNum && blueNum > greenNum) {
-            // if green is the second-highest
-            if (greenNum > redNum) {
-              console.log("23) order BGR; category blue");
-              colorCategory = "blue";
-              // or if red is the second highest
-            } else if (redNum > greenNum) {
-              console.log("24) order BRG; category blue");
-              colorCategory = "blue";
-            }
-          }
-        }
-        // if the colorDifferences array does not contain any matching values:
+        // handles case that there are no matching values in colorDifferences array:
       } else {
         console.log("no matching values; compare to lowest sum");
         // check to see which index holds the lowest value,
         // and use that to determine the color category
         if (colorDifferences.indexOf(lowestSum) === 0) {
-          console.log("25) category red");
+          console.log("13) category red");
           colorCategory = "red";
         } else if (colorDifferences.indexOf(lowestSum) === 1) {
-          console.log("26) category orange");
+          console.log("14) category orange");
           colorCategory = "orange";
         } else if (colorDifferences.indexOf(lowestSum) === 2) {
-          console.log("27) category yellow");
+          console.log("15) category yellow");
           colorCategory = "yellow";
         } else if (colorDifferences.indexOf(lowestSum) === 3) {
-          console.log("28) category (yellow-)green");
+          console.log("16) category (yellow-)green");
           colorCategory = "yellowgreen";
         } else if (colorDifferences.indexOf(lowestSum) === 4) {
-          console.log("29) category green");
+          console.log("17) category green");
           colorCategory = "green";
         } else if (colorDifferences.indexOf(lowestSum) === 5) {
-          console.log("30) category (turquoise) green");
+          console.log("18) category (turquoise) green");
           colorCategory = "turquoise";
         } else if (colorDifferences.indexOf(lowestSum) === 6) {
-          console.log("31) category cyan");
+          console.log("19) category cyan");
           colorCategory = "cyan";
         } else if (colorDifferences.indexOf(lowestSum) === 7) {
-          console.log("32) category (aqua) blue");
+          console.log("20) category (aqua) blue");
           colorCategory = "aqua";
         } else if (colorDifferences.indexOf(lowestSum) === 8) {
-          console.log("33) category blue");
+          console.log("21) category blue");
           colorCategory = "blue";
         } else if (colorDifferences.indexOf(lowestSum) === 9) {
-          console.log("34) category purple");
+          console.log("22) category purple");
           colorCategory = "purple";
         } else if (colorDifferences.indexOf(lowestSum) === 10) {
-          console.log("35) category magenta");
+          console.log("23) category magenta");
           colorCategory = "magenta";
         } else if (colorDifferences.indexOf(lowestSum) === 11) {
-          console.log("36) category red (pinkish?)");
+          console.log("24) category red (pinkish?)");
           colorCategory = "red";
         }
       }
@@ -358,15 +281,15 @@ $("#submitBtn").on("click", function () {
       console.log("all values are equal to each other");
       // if the values are each between 30 and 240, set to gray
       if (redNum >= 30 && redNum <= 240) {
-        console.log("39) category gray");
+        console.log("25) category gray");
         colorCategory = "gray";
         // if the values are each less than 30, set to black
       } else if (redNum < 30 && redNum >= 0) {
-        console.log("40) category black");
+        console.log("26) category black");
         colorCategory = "black";
         // if the values are each more than 240, set to white
       } else if (redNum > 240 && redNum <= 255) {
-        console.log("41) category white");
+        console.log("27) category white");
         colorCategory = "white";
       }
     } else {
@@ -374,20 +297,20 @@ $("#submitBtn").on("click", function () {
       // get a gray category even if the values are not all the same
       if (averageDiff < 10) {
         // if the average distance between the three values is then than 10,
-        console.log("42) category gray");
+        console.log("28) category gray");
         // then categorize color as grey
         colorCategory = "gray";
       } else {
         // if the average is less than 30, then the color is close to black
         if (averageColor >= 0 && averageColor <= 30) {
-          console.log("43) based on average: category black");
+          console.log("29) based on average: category black");
           colorCategory = "black";
           // if the average is between 30 and 240, then run the above compareColors function
         } else if (averageColor > 30 && averageColor < 240) {
           compareColors(numArray);
           // if the average is greater than 240, then the color is close to white
         } else if (averageColor >= 240 && averageColor <= 255) {
-          console.log("44) based on average: category white");
+          console.log("30) based on average: category white");
           colorCategory = "white";
         }
       }
