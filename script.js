@@ -76,19 +76,19 @@ $("#submitBtn").on("click", function () {
         [255, 0, 0], // red
         [255, 125, 0], // orange
         [255, 255, 0], // yellow
-        [125, 255, 0], // yellow-green
+        [125, 255, 0], // yellow-green *
         [0, 255, 0], // green
-        [0, 255, 125], // turquoise
-        [0, 255, 255], // cyan
-        [0, 125, 255], // aqua
+        [0, 255, 125], // turquoise *
+        [0, 255, 255], // cyan *
+        [0, 125, 255], // aqua *
         [0, 0, 255], // blue
-        [125, 0, 255], // violet
+        [125, 0, 255], // purple *
         [255, 0, 255], // magenta
-        [255, 0, 125], // pink
+        [255, 0, 125], // pink *
       ];
 
       // for each "true color", get the difference from the user's input
-      // Red, Orange, Yellow, Lime, Green, Turquoise, Cyan, Aqua, Blue, Violet, Magenta, Pink
+      // Red, Orange, Yellow, Lime, Green, Turquoise, Cyan, Aqua, Blue, Purple, Magenta, Pink
       for (var i = 0; i < trueROYLGTCABVMP.length; i++) {
         var currentTrueColor = trueROYLGTCABVMP[i];
         getDifferences(currentTrueColor, numArray);
@@ -385,11 +385,11 @@ $("#submitBtn").on("click", function () {
         colorCategory = "gray";
       } else {
         // if the average is less than 30, then the color is close to black
-        if (averageColor >= 0 && averageColor < 30) {
+        if (averageColor >= 0 && averageColor <= 30) {
           console.log("43) based on average: category black");
           colorCategory = "black";
           // if the average is between 30 and 240, then run the above compareColors function
-        } else if (averageColor >= 30 && averageColor < 240) {
+        } else if (averageColor > 30 && averageColor < 240) {
           compareColors(numArray);
           // if the average is greater than 240, then the color is close to white
         } else if (averageColor >= 240 && averageColor <= 255) {
