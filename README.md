@@ -1,4 +1,5 @@
-# ColorSortingMachine
+# Color Sorting Machine
+![GitHub repo size](https://img.shields.io/github/repo-size/CrainDavis/ColorSortingMachine?style=for-the-badge) ![GitHub code size](https://img.shields.io/github/languages/code-size/CrainDavis/ColorSortingMachine?color=gold&style=for-the-badge) ![GitHub language count](https://img.shields.io/github/languages/count/CrainDavis/ColorSortingMachine?color=green&style=for-the-badge) ![GitHub top language](https://img.shields.io/github/languages/top/CrainDavis/ColorSortingMachine?color=red&style=for-the-badge)
 
 ## Description:
 This application is a side-project for [Color-Story](https://github.com/Mleuer/Color-Story). This ColorSortingMachine allows for a user to input values for RGB colors, and see how this RGB value is categorized. Color categories are as follows:
