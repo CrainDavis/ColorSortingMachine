@@ -3,7 +3,7 @@
 
 ## Description:
 This application is a side-project for [Color-Story](https://github.com/Mleuer/Color-Story). This ColorSortingMachine allows for a user to input values for RGB colors, and see how this RGB value is categorized. Color categories are as follows:
-* red (which includes pink)
+* red (which includes shades of pink)
 * orange
 * yellow
 * green
