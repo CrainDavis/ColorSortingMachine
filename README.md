@@ -81,7 +81,7 @@ If this `averageDiff` value is less than __10__, then the user's input RGB color
     * Using this __(10, 26, 111)__ value from the three differences, I then calculate a `differenceSum` value by adding these three RGB values together. The result is __147__, which corresponds to the first value in the `colorDifferences` array. 
 * I repeat the process for the remaining 11 values.
 
-* The next step is to find out which of the 12 numbers in the `colorDifferences` array is the smallest. In the case of this explanation, it is __50__, the last number in the array (index of 11). Based on the index number of this lowest value, the color category is determined. (_note_: "red" is listed twice; the second instance corresponds to the "pink" value, but I have chosen to categorize all "pink" values as shades of "red".)
+* The next step is to find out which of the 12 numbers in the `colorDifferences` array is the smallest. In the case of this explanation, it is __50__, the last number in the array (index of 11). Based on the index number of this lowest value, the color category is determined. (_note_: "red" is listed twice; the second instance corresponds to the "pink" value, but I have chosen to categorize all "pink" values as shades of "red" for the sake of simplicity and my sanity.)
     * if lowest number = index 0: `colorCategory` = "red"
     * if lowest number = index 1: `colorCategory` = "orange"
     * if lowest number = index 2: `colorCategory` = "yellow"
@@ -96,7 +96,7 @@ If this `averageDiff` value is less than __10__, then the user's input RGB color
     * if lowest number = index 11: `colorCategory` = "red"
 * As a result, the user input value (__RGB(245, 26, 111)__) is categorized as "red".
 
-* However, I also came across instances where the lowest number in the `colorDifferences` array appeared twice, causing issues with the algorithm this far. As a result, I needed to also consider how to categorize an RGB value if it was determined to have two "lowest values". 
+* However, I also came across instances where the lowest number in the `colorDifferences` array appeared twice, causing issues with the algorithm this far. As a result, I needed to also consider how to categorize an RGB value if it was determined to have two equal "lowest values". 
     * Take, for example, the RGB value __RGB(75, 119, 63)__: the algorithm thus far will categorize this value as "orange", even though it is actually "green". 
     * If we look at the `colorDifferences` array `[362, 249, 379, 249, 274, 273, 403, 273, 386, 361, 491, 361]`, we see that the values at index 1 and index 3 are both __249__.
     * _note_: the values at index 5 and index 7 are also identical (__273__), but because this is greater than __249__, it is disregarded entirely. 
