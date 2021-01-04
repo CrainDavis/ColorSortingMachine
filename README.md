@@ -125,8 +125,8 @@ If this `averageDiff` value is less than __10__, then the user's input RGB color
 ---
 
 ## Future Development:
-There are some kinks that still need to be worked out. Following _significant_ testing, this section will be updated.
-* the color "gray" is a bit subjective
+There are some kinks that still need to be worked out. Following _significant_ testing, this section and the code will be updated.
+* the colors "black", "white", and "gray" are a bit subjective, both between each other and with shades/tints of the other `ROYLGTCABVMP` colors.
 * the difference between "red", "magenta", and "purple" is _quite_ subjective
     * a pink-ish color can be categorized as any of the above depending on how it gets sorted in the algorithm, and the outcome can be debatable
 * the range of "green" and "blue" are each quite large compared to "red"
