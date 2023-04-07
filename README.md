@@ -142,9 +142,3 @@ There are some kinks that still need to be worked out. Following _significant_ t
     * [Bootstrap](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
     * [jQuery](https://jquery.com/)
 
----
-
-## Questions:
-For any questions, contact me at:
-* email: chyna.davis11@gmail.com
-* GitHub: [CrainDavis](https://github.com/CrainDavis)
